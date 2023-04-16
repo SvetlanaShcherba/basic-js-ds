@@ -6,43 +6,62 @@ const { NotImplementedError } = require('../extensions/index.js');
 * Implement simple binary search tree according to task description
 * using Node from extensions
 */
+
 class BinarySearchTree {
-
+  constructor () {
+    this.tree=[];
+    this.filterTree=[];
+    this.data=null;
+    
+  }
+  
   root() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    if (this.filterTree.length>0)
+      return this.filterTree[0];
+    else
+     return null;  
   }
 
-  add(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  add(data) {
+    this.tree[data]=data;
+    this.filterTree=this.tree.filter((elem)=>elem!=null);
+    this.data=data;
   }
 
-  has(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  has(data) {
+    if (this.tree.indexOf(data) == -1) {
+      return false;
+    }  
+    else 
+      return true;
   }
 
-  find(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  find(data) {
+    if (this.tree.indexOf(data) == -1) {
+      return null;
+    }  
+    else 
+      return (this.tree.indexOf(data));  
   }
 
-  remove(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  remove(data) {
+    if (this.tree.indexOf(data) != -1) {
+      this.tree=this.tree.filter((elem)=> elem!==data);  
+      this.filterTree=this.tree.filter((elem)=>elem!=null);
+    }
+      
   }
 
   min() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    if (this.filterTree.length>0)
+      return this.filterTree[0];
   }
 
   max() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    if (this.filterTree.length>0)
+      return this.filterTree[this.filterTree.length-1];
   }
-}
+} 
 
 module.exports = {
   BinarySearchTree
