@@ -11,8 +11,7 @@ class BinarySearchTree {
   constructor () {
     this.tree=[];
     this.filterTree=[];
-    this.data=null;
-    
+    this.treeRoot=null;    
   }
   
   root() {
@@ -23,9 +22,10 @@ class BinarySearchTree {
   }
 
   add(data) {
+    if (this.root===null)
+      this.treeRoot=data;
     this.tree[data]=data;
     this.filterTree=this.tree.filter((elem)=>elem!=null);
-    this.data=data;
   }
 
   has(data) {
@@ -49,7 +49,9 @@ class BinarySearchTree {
       this.tree=this.tree.filter((elem)=> elem!==data);  
       this.filterTree=this.tree.filter((elem)=>elem!=null);
     }
-      
+    if (data===this.root) {
+      this.root=this.filterTree[data+1]
+    }      
   }
 
   min() {
